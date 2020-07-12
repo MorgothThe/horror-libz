@@ -16,6 +16,4 @@ public class HorrorEntity {
 	private double stars;
 	private String media;
 	private Rating rating;
-
-
 }
