@@ -19,11 +19,11 @@ public class UserController {
 
     private UserService userService;
 
-    @Autowired
     private ModelMapper mapper;
 
-    public UserController(UserService userService){
+    public UserController(UserService userService, ModelMapper mapper){
         this.userService =  userService;
+        this.mapper = mapper;
     }
 
     @PostMapping(consumes= MediaType.APPLICATION_JSON_VALUE)
