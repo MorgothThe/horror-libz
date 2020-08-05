@@ -30,4 +30,11 @@ public class UserController {
     public void addUser(@RequestBody UserTo user){
         userService.saveUser(user);
     }
+
+    @GetMapping("/sorted")
+    public List<UserTo> sortUser(){
+        return this.userService.sortUser().stream().map(this::convertToDto).collect(Collectors.toList());}
+
+    private UserTo convertToDto(UserEntity userEntity) {
+        return this.mapper.map(userEntity, UserTo.class);}
 }

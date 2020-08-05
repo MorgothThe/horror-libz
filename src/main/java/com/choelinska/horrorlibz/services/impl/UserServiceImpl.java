@@ -28,9 +28,12 @@ public class UserServiceImpl implements UserService {
         userRepository.save(mapToEntity(user));
     }
 
+    @Override
+    public List<UserEntity> sortUser(){
+        return this.userRepository.findAll(Sort.by(Sort.Direction.DESC,"username"));
+    }
+
     private UserEntity mapToEntity(UserTo user){
         return modelMapper.map(user, UserEntity.class);
     }
-    private UserTo convertToDto(UserEntity userEntity) {
-        return this.modelMapper.map(userEntity, UserTo.class);}
 }
