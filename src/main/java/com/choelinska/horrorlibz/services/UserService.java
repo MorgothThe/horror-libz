@@ -4,4 +4,5 @@ import com.choelinska.horrorlibz.model.dto.UserTo;
 
 public interface UserService {
     public void saveUser(UserTo user);
+    public void editUser(UserTo user);
 }

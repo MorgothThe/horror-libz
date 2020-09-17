@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<UserEntity,Long> {
     @Override
     <S extends UserEntity> S save(S entity);
+    <S extends UserEntity> S edit(S entity);
 }

@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(UserTo user) {
         userRepository.save(mapToEntity(user));
     }
+    public void editUser(UserTo user){ userRepository.edit(mapToEntity(user));}
 
     private UserEntity mapToEntity(UserTo user){
         return modelMapper.map(user, UserEntity.class);

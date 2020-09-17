@@ -30,4 +30,9 @@ public class UserController {
     public void addUser(@RequestBody UserTo user){
         userService.saveUser(user);
     }
+
+    @PutMapping
+    public void editUser(@RequestBody UserTo user){
+        userService.editUser(user);
+    }
 }
