@@ -19,11 +19,8 @@ public class UserController {
 
     private UserService userService;
 
-    private ModelMapper mapper;
-
     public UserController(UserService userService, ModelMapper mapper){
         this.userService =  userService;
-        this.mapper = mapper;
     }
 
     @PostMapping(consumes= MediaType.APPLICATION_JSON_VALUE)
@@ -31,10 +28,15 @@ public class UserController {
         userService.saveUser(user);
     }
 
-    @GetMapping("/sorted")
-    public List<UserTo> sortUser(){
-        return this.userService.sortUser().stream().map(this::convertToDto).collect(Collectors.toList());}
+    //Get all users sorted by username DESC
+    @GetMapping("/sortedNameDesc")
+    public List<UserEntity> getSorted(){
+        return userService.getSortedByName();
+    }
 
-    private UserTo convertToDto(UserEntity userEntity) {
-        return this.mapper.map(userEntity, UserTo.class);}
+    //Get all users by ID
+    @GetMapping("/all")
+    public List<UserEntity> getAll(){
+        return userService.getUsers();
+    };
 }

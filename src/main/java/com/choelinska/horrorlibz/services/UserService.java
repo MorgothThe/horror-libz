@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface UserService {
     public void saveUser(UserTo user);
-    List<UserEntity> sortUser();
+    public List<UserEntity> getUsers();
+    public List<UserEntity> getSortedByName();
 }
