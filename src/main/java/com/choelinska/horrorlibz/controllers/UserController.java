@@ -19,15 +19,24 @@ public class UserController {
 
     private UserService userService;
 
-    private ModelMapper mapper;
-
     public UserController(UserService userService, ModelMapper mapper){
         this.userService =  userService;
-        this.mapper = mapper;
     }
 
     @PostMapping(consumes= MediaType.APPLICATION_JSON_VALUE)
     public void addUser(@RequestBody UserTo user){
         userService.saveUser(user);
     }
+
+    //Get all users sorted by username DESC
+    @GetMapping("/sortedNameDesc")
+    public List<UserEntity> getSorted(){
+        return userService.getSortedByName();
+    }
+
+    //Get all users by ID
+    @GetMapping("/all")
+    public List<UserEntity> getAll(){
+        return userService.getUsers();
+    };
 }
